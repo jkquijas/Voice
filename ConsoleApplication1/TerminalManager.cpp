@@ -1,15 +1,21 @@
+#pragma once
+#ifdef _WIN32
 #include "stdafx.h"
-#include "TerminalManager.h"
+#endif
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
 #include <iostream>
 #include <vector>
 
+#include "TerminalManager.hpp"
 
+using namespace std;
 
-TerminalManager::TerminalManager(std::vector<std::vector<char>> g)
+TerminalManager::TerminalManager(vector<vector<string> > *g, int size)
 {
 	grid = g;
-	playerX = 2;
-	playerY = 2;
+	gridSize = size;
 }
 
 
@@ -18,20 +24,11 @@ TerminalManager::~TerminalManager()
 }
 
 void TerminalManager::printTerminal(){
-	for (int i = 0; i < gridSide; i++){
-		for (int j = 0; j < gridSide; j++){
-			if (i == playerX && j == playerY){
-				std::cout << playerImage << " ";
-			}
-			else
-			{
-				std::cout <<  grid[i][j] << " ";
-			}
-			
+	for (int i = 0; i < gridSize; i++){
+		for (int j = 0; j < gridSize; j++){
+			cout << (*grid)[i][j];
 		}
-	std::cout << "\n";
+		cout << "\n";
 	}
-	std::cout << "\n";
-
-	
+	cout << "\n";
 }
